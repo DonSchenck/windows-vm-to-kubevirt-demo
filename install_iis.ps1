@@ -31,6 +31,8 @@ Enable-WindowsOptionalFeature -Online -FeatureName IIS-StaticContent
 Enable-WindowsOptionalFeature -Online -FeatureName IIS-DefaultDocument
 Enable-WindowsOptionalFeature -Online -FeatureName IIS-WebSockets
 Enable-WindowsOptionalFeature -Online -FeatureName IIS-ApplicationInit
+Enable-WindowsOptionalFeature -Online -FeatureName NetFx3ServerFeatures
+Enable-WindowsOptionalFeature -Online -FeatureName NetFx4Extended-ASPNET45
 Enable-WindowsOptionalFeature -Online -FeatureName IIS-NetFxExtensibility
 Enable-WindowsOptionalFeature -Online -FeatureName IIS-NetFxExtensibility45
 Enable-WindowsOptionalFeature -Online -FeatureName IIS-ASPNET
