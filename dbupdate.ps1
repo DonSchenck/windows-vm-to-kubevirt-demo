@@ -1,14 +1,21 @@
 #
 # dbupdate.ps1
 #
-#Create SQL Connection
+# Establish variable values
+[String]$database = 'wingtiptoys'
+[String]$userid = 'sa'
+[String]$password = 'EncryptThis2'
+[String]$serverIP = '52.183.249.9'
+
+# Create SQL Connection
+
 
 Write-Verbose "Beginning database update..."
 
 $con = new-object "System.data.sqlclient.SQLconnection"
 
 #Set Connection String
-$con.ConnectionString =("Server=52.183.249.9;Database=wingtiptoys;User ID=sa;Password=EncryptThis2;")
+$con.ConnectionString =("Server=$serverIP;Database=$database;User ID=$userid;Password=$password;")
 $con.open()
 
 Write-Verbose "...Deleting existing records..."
@@ -21,14 +28,12 @@ $rowsAffected = $sqlcmd.ExecuteNonQuery()
 
 Write-Verbose "...Writing new records..."
 
-$database = 'wingtiptoys'
-$server = '52.183.249.9'
 $table = 'dbo.Products'
 
 Import-Csv products.csv | ForEach {Invoke-Sqlcmd `
-        -Username sa `
-        -Password EncryptThis2 `
-	-Database $database -ServerInstance $server `
+        -Username $userid `
+        -Password $password `
+	-Database $database -ServerInstance $serverIP `
 	-Query "insert into $table (ProductName,Description,ImagePath,UnitPrice,CategoryID) VALUES ('$($_.productname)','$($_.description)','$($_.imagepath)','$($_.unitprice)','$($_.categoryid)')"
 }
 
