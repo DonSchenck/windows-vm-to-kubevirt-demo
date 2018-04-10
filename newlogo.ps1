@@ -1,0 +1,1 @@
+copy-item -Path "C:\inetpub\wwwroot\WingtipToys\Images\Star-Logo.jpg" -Destination "C:\inetpub\wwwroot\WingtipToys\Images\logo.jpg" -Force
