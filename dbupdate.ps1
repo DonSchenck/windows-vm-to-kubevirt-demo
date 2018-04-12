@@ -30,7 +30,7 @@ Write-Verbose "...Writing new records..."
 
 $table = 'dbo.Products'
 
-Import-Csv products.csv | ForEach {Invoke-Sqlcmd `
+Import-Csv "C:\Users\Administrator\windows-vm-to-kubevirt-demo\products.csv" | ForEach {Invoke-Sqlcmd `
         -Username $userid `
         -Password $password `
 	-Database $database -ServerInstance $serverIP `
